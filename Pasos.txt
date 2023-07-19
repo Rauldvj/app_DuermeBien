@@ -35,7 +35,12 @@ ls -ltr (Para visualizar que tenemos ya el directorio app_duermebien
 cd app_DuermeBien (Para ingresar en el directorio clonado)
 
 ----------------------------------------------------------------------
-Paso 5 Instalar necesarios para ejecutar la aplicacion
+Paso 5 Instalar pip 
+
+sudo dnf install pip -y (Instalar pip en Linux)
+
+----------------------------------------------------------------------
+Paso instalar librerias necesarias para ejecutar la aplicacion
 usar el archivo requirements.txt para instalar las libreras necesarias
 
 Usar el comando:
@@ -48,8 +53,10 @@ En nuestra instancia, ingresamos a "Grupos de seguridad"
 Nos vamos a editar regla
 añadimos un custom tcp con el puerto 8000 y con direccion 0.0.0.0/0 
 Guardamos
+----------------------------------------------------------------
+Paso 7
 
-
+Realizar Migraciones de DJango
 Make Migrations
 
 python3 manage.py makemigrations
@@ -67,11 +74,9 @@ Runserver
 python3 manage.py runserver 0.0.0.0:8000
 
 link:
- http://54.91.235.231:8000/
+Sera el enlace publico de AWS, dejar http y agregar al .com el :8000
 
-REVISAR PARA EVALUACION:
 
-Firewall de AWS
 
 
 
