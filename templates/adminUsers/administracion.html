@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Index {% endblock %}
+
+
+{% block content %}  
+
+    {% include 'componentes/sidenavA.html' %}   
+
+{% endblock content %}
+
+{% block img%}
+
+<!-- En este source se inserta la "Imagen" con la direccion url del bucket almacenado en la nube de AWS -->
+    <img class="mx-64 w-4/5 h-screen mr-44 py-6 grow-0" 
+    src="https://sumativa3.s3.amazonaws.com/imagenes/ADMINISTRACION.jpg" alt="">
+{% endblock %}
+
+
+{% block footer %}
+    {% include 'componentes/footer.html'%}
+{% endblock %}

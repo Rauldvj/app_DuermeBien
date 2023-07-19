@@ -1,0 +1,35 @@
+Instrucciones para poder visualizar el presente proyecto en Django
+
+Via cmd instalar los siguientes comandos pip:
+
+pip install asgiref
+pip install crispy-tailwind
+pip install Django
+pip install django-admin-interface
+pip install django-admin-tailwind
+pip install django-browser-reload
+pip install django-colorfield
+pip install django-crispy-forms
+pip install django-tailwind
+pip install djangorestframework
+pip install mysqlclient
+pip install python-slugify
+pip install pytz
+pip install sqlparse
+pip install django-tailwind
+pip install tailwind-colors
+text-unidecode
+pip install tzdata
+
+Una vez instalados estas librerias, ejecutar en nuevo terminal de Visual Code y el
+comando para ejecutar app: python manage.py runserver
+
+
+Datos SuperUser:
+user: administrador
+password: admin123456
+
+User:
+user: PatricioSoto
+password: pato123456
+

@@ -1,0 +1,16 @@
+{% if paginator.num_pages > 1%}
+<div class="inline-flex items-center -space-x-px">
+    <ul class="pagination">
+        {% if entity.has_previous %}
+            <li class="block mt-2 py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-purple-800 dark:border-gray-700 dark:text-white dark:hover:bg-purple-700 dark:hover:text-white"><a class="page-link" href="?page={{ entity.previous_page_number }}#pagtable">Anterior</a></li>
+        {% endif %}
+        
+        {% if entity.has_next %}
+            <li class="page-item mt-2 block py-2 px-3 leading-tight text-gray-500 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-purple-800 dark:border-gray-700 dark:text-white dark:hover:bg-purple-700 dark:hover:text-white">
+                <a class="page-link " href="?page={{ entity.next_page_number }}#pagtable">Siguiente</a>
+            </li>
+        {% endif %}
+    </ul>
+</div>
+
+{% endif %}

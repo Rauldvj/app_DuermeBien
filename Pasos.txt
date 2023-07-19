@@ -1,0 +1,92 @@
+Paso 1: Git.
+
+Crear repositorio en GitHub
+Dentro de la carpeta de nuestro proyecto, damos click derecho y elegimos Git Bash Here
+Sub) Para subir la app a GitHub
+a)Dentro de la consola git, escribimos los siguientes comandos:
+
+git init (Para inicializar el repositorio)
+git add . (Par agregar todo el directorio)
+git commit -m "Mi primero Proyecto en GitHub" (Primer comiteo)
+
+Corregir cuenta y correo en windows (CMD), ya que ocaciona problemas al querer subir la app.
+Bajar Git para Windows e intalar.
+Subir la app al repositorio segun los comandos de Git, desde Visual Studio.
+
+--------------------------------------------------------------------
+Paso 2 AWS.
+Abrir servicio EC2 y crear la instancia con OS Linux Amazon
+elegir t2.micro 1gb ram(capa free)
+Crear nuevas llaves 
+Crear intancia
+Lanzar
+
+
+Paso 4 Subir APP en Linux Amazon.
+Comandos:
+
+clear (limpiar pantalla)
+sudo dnf update -y (Actualizar dependencias de Linux)
+sudo dnf install git -y (Instalamos Git)
+git clone https://github.com/Rauldvj/app_DuermeBien.git (Para clonar y subir la app desde GitHub)
+
+clear (volvemos a limpiar la pantalla)
+ls -ltr (Para visualizar que tenemos ya el directorio app_duermebien
+cd app_DuermeBien (Para ingresar en el directorio clonado)
+
+----------------------------------------------------------------------
+Paso 5 Instalar necesarios para ejecutar la aplicacion
+
+sudo dnf install pip -y (Instalar pip en Linux)
+pip install django (Instalar Django)
+pip install crispy-tailwind
+pip install django-admin-interface
+pip install django-admin-tailwind
+pip install django-browser-reload
+pip install django-colorfield
+pip install django-crispy-forms
+pip install django-tailwind
+pip install djangorestframework
+pip install mysqlclient
+pip install python-slugify
+pip install pytz
+pip install sqlparse
+pip install django-tailwind
+pip install tailwind-colors
+pip install pymysql
+pip install pillow
+
+user: admin
+pass: admin123456
+
+En nuestra instancia, ingresamos a "Grupos de seguridad" 
+Nos vamos a editar regla
+añadimos un custom tcp con el puerto 8000 y con direccion 0.0.0.0/0 
+Guardamos
+
+
+Make Migrations
+
+python3 manage.py makemigrations
+
+Migrate
+
+python3 manage.py migrate
+
+Createsuperuser
+
+python3 manage.py createsuperuser
+
+Runserver
+
+python3 manage.py runserver 0.0.0.0:8000
+
+link:
+ http://54.91.235.231:8000/
+
+REVISAR PARA EVALUACION:
+
+Firewall de AWS
+
+
+

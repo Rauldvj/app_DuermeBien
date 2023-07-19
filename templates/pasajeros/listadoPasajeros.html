@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %} Listado Pasajeros {% endblock %}
+
+{% block content %}
+{% include 'componentes/sidenav.html' %}
+<!-- --------CONTENIDO DE LISTADO DE LISTADO--------- -->
+
+<main id="mainListado" class="ml-64 md:w-3/5  xl:w-4/5 px-1 py-3">
+
+    <h2 class="text-3xl font-bold text-center text-purple-200 mt-1">Listado de Pasajeros</h2>
+
+    <div class="flex flex-col mt-5">
+        <div class="py-2 overflow-x-auto">
+            <div
+                class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+                <table class="min-w-full bg-gradient-to-r from-purple-800 via-violet-900 to-purple-800">
+                    <thead class="bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900">
+                        <tr>
+                            <th
+                                class="px-3 py-3 border-b border-gray-400  text-left text-xs leading-4 font-medium text-purple-200  uppercase tracking-wider">
+                                Rut O Pasaporte
+                            </th>
+                            <th
+                                class="px-0 py-3 border-b border-gray-400  text-left text-xs leading-4 font-medium text-purple-200  uppercase tracking-wider">
+                                Pasajero
+                            </th>
+                            <th
+                                class="px-4 py-3 border-b border-gray-400  text-left text-xs leading-4 font-medium text-purple-200  uppercase tracking-wider">
+                                Habitacion/Tipo
+                            </th>
+
+                            <th
+                                class="px-1 py-3 border-b border-gray-400  text-left text-xs leading-4 font-medium text-purple-200  uppercase tracking-wider">
+                                Telefono/Email
+                            </th>
+                            <th
+                                class="px-4 py-3 border-b border-gray-400  text-left text-xs leading-4 font-medium text-purple-200  uppercase tracking-wider">
+                                Direccion/Pais/Ciudad
+                            </th>
+                            <th
+                                class="px-4 py-3 border-b border-gray-400  text-left text-xs leading-4 font-medium text-purple-200  uppercase tracking-wider">
+                                Llegada/Salida
+                            </th>
+
+                            <th
+                                class="px-0 py-3 border-b border-gray-400  text-left text-xs leading-4 font-medium text-purple-200  uppercase tracking-wider">
+                                Acciones
+                            </th>
+                        </tr>
+                        
+                    </thead>
+                    
+                    <!-- for para entragar los datos en el listado de pasajeros -->
+                    {% for p  in entity %}
+                    
+                    <td class="px-3 py-4 whitespace-no-wrap border-b border-gray-600 ">
+                        <p class="text-purple-200 font-medium text-lg">{{p.rutOpasaporte}}</p>
+
+                    </td>
+                    <td class="px-0 py-4 whitespace-no-wrap border-b border-gray-600">
+                        <p class="leading-4 text-purple-200  text-md  font-bold mb-2"> {{p.nombres}} </p>
+                        <p class="leading-5 text-purple-200  text-md  font-bold mb-4"> {{p.apellidos}}</p>
+                        <!-- <p class="text-sm leading-5 text-purple-200 "> Rut O pasaporte </p> -->
+
+                    </td>
+                    <td class="px-6 py-1 whitespace-no-wrap border-b border-gray-600 ">
+                        <p class="text-purple-200 text-sm mb-3">N° Habitacion: {{p.nHabitacion}} </p>
+                        <p class="text-purple-200 text-sm mb-3">Tipo: {{p.tipoHabitacion}} </p>
+                        <p class="text-purple-200 text-sm mb-3">N° Niños: {{p.cantidadNinos}} </p>
+                        <p class="text-purple-200 text-sm mb-3">N° Adultos: {{p.cantidadAdultos}} </p>
+                    </td>
+                    <td class="px-1 py-4 whitespace-no-wrap border-b border-gray-600 ">
+                        <p class="text-purple-200 mb-4"> {{p.telefono}} </p>
+                        <p class="text-purple-200 mb-4"> {{p.email}} </p>
+                    </td>
+                    <td class="px-4 py-4 whitespace-no-wrap border-b border-gray-600  leading-5 text-gray-700">
+                        <p class="text-purple-200 mb-4"> {{p.direccion}} </p>
+                        <p class="text-purple-200 mb-4">Pais: {{p.pais}} </p>
+                        <p class="text-purple-200 mb-4">Ciudad: {{p.ciudad}} </p>
+                    </td>
+                    <td class="px-4 py-4 whitespace-no-wrap border-b border-gray-600 ">
+                        <p class="text-purple-200 text-sm mb-4">Llegada: {{p.llegada}} </p>
+                        <p class="text-purple-200 text-sm">Salida: {{p.salida}} </p>
+                    </td>
+                    
+                    <td class="grid grid-rows-3 grid-flow-col gap-3 px-1 py-5 whitespace-no-wrap border-b border-gray-600 text-sm leading-4 mr-2">
+                        <a href="{% url 'editarPasajero' p.rutOpasaporte %}" class="text-yellow-500 font-bold hover:text-white ">Editar</a>
+                        <a href="#" onclick="eliminarPasajero({{p.id}})"
+                            class="button text-purple-200  hover:text-white eliminar">Eliminar</a>
+                        <a href="{% url 'servicios'  %}"
+                            class="font-bold text-purple-100  hover:text-white">Agregar Servicios</a>
+                        <a href="{% url 'facturaPasajero'  %}"
+                            class="font-bold text-purple-100  hover:text-white">Factura</a>
+                            
+                            
+                    </td>
+                    <tbody id="listado-pasajeros" class="bg-white"></tbody>
+                    {% endfor %}
+                </table>
+            </div>
+            <div>
+                {% include 'pasajeros/paginator.html' %}
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+
+<!-- -----------FIN CONTENIDO----------- -->
+{% endblock content %}
+
+{% block footer %}
+{% include 'componentes/footer.html'%}
+{% endblock %}
+
+
+<!-- ------------------------------------------------------------------- -->
+<!-- FUNCION JAVASCRIPT PARA ELIMIENAR CON SWEET ALERT! -->
+{% block js %} 
+    <script>
+        function eliminarPasajero(rutOpasaporte) {
+            Swal.fire({
+                "title": "¿Estas seguro de eliminar este registro?",
+                "text": "¡ATENCION! ¡Esta accion es irreversible!",
+                "icon": "question",
+                "showCancelButton": true,
+                "cancelButtonText": "¡Cancelar Acción!",
+                "confirmButtonText": "¡Si, Estoy Seguro!",
+                "reverseButton": true,
+                "confirmButtonColor": "#dc3545"               
+            })
+            .then(function(result) {
+                if(result.isConfirmed){
+                    window.location.href = "/eliminarPasajero/" + rutOpasaporte + "/"
+                }
+            })          
+        }
+    </script>
+    
+{% endblock %}
+
+

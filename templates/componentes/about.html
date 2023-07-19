@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+<!-- {% load static%} -->
+
+{% block title %} About {% endblock %}
+
+{% block content %}
+
+<div class="text-slate-200 mt-5 ml-10">
+    <h1 class="font-bold text-3xl text-left text-purple-900">Nuestra Misión</h1>
+    <div class="text-lg text-purple-200">
+        <p>Trabajamos en equipo y estamos comprometidos en ofrecer experiencias inolvidables</p>
+        <p>para todos aquellos que nos visiten sin importar su motivo o el tiempo que permanezcan;</p>
+        <p>ofreciendo un servicio personalizado, genuino y de excelencia, aportando a la comunidad,</p>
+        <p>ofreciendo un servicio personalizado, genuino y de excelencia, aportando a la comunidad,</p>
+        <p>celebrando la diversidad y superando las expectativas en todos sus aspectos</p>
+        <p>para obtener su preferencia.</p>
+    </div>
+</div>
+<div class="text-slate-200 mt-7 ml-10">
+    <h1 class="text-slate-200 font-bold text-3xl text-left text-purple-900">Nuestra Visión</h1>
+    <div class="text-lg">
+        <p>Ser reconocidos, elegidos y destacados en el rubro hotelero por nuestro compromiso</p>
+        <p>en ofrecer un servicio excepcional, cálido y genuino</p>
+        <p>manteniendo relaciones de confianza y que prosperan en el tiempo.</p>
+    </div>
+</div>
+<div class="text-slate-200 mt-7 ml-10 italic font-bold text-sm text-purple-900">
+    <p>Raul Córdova, Carlos Castro, Francisca Olavarría, Carlos Oliveros, Sergio Cortes.</p>
+    <p>Alumnos Ingeniería en Informática & Analista Programador</p>
+    <p>Programacion Backend 2022</p>
+</div>
+
+<div class="text-purple-800 font-bold ml-10 py-8">
+    <a href="{% url 'index'%}"> Regresar al Inicio</a>
+</div>
+{% endblock content %}
+
+
+
+
+
+{% block footer %}
+{% include 'componentes/footer.html'%}
+{% endblock %}

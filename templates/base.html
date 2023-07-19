@@ -1,0 +1,38 @@
+
+<!-- {% load static %} -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %} {% endblock %}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+  </head>
+
+  <body class="bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
+    <div class="header">{% block header %} {% endblock %}</div>
+
+    <div class="sidebar">{% block sidebar %} {% endblock %}</div>
+
+    <div class="contenido">{% block content %} {% endblock content %}</div>
+
+    <div class="imagen">{% block img%} {% endblock %}</div>
+
+    <div class="footer">{% block footer %} {% endblock %}</div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %} {% for m in messages %}
+    <script>
+      Swal.fire({
+        title: "¡Excelente!",
+        text: "{{m}}",
+        icon: "success",
+      });
+    </script>
+    {% endfor%} {% endif %} 
+    
+    {% block js %} {% endblock %}
+  </body>
+</html>

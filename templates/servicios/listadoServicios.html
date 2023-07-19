@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Listado Servicios {% endblock %}
+
+{% block content %}
+{% include 'componentes/sidenav.html' %}
+<!-- --------CONTENIDO DE LISTADO DE LISTADO--------- -->
+
+<main id="mainListado" class="ml-64 md:w-3/5  xl:w-4/5 px-1 py-3">
+
+    <h2 class="text-3xl font-bold text-center text-purple-200 mt-1">Listado de  Servicios de Pasajeros</h2>
+
+    <div class="flex flex-col mt-5">
+        <div class="py-2 overflow-x-auto">
+            <div
+                class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+                <table class="min-w-full bg-gradient-to-r from-purple-800 via-violet-900 to-purple-800">
+                    <thead class="bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900">
+                        <tr>
+                            <th
+                                class="px-3 py-3 border-b border-gray-400  text-left text-xs leading-4 font-medium text-purple-200  uppercase tracking-wider">
+                                DNI Pasajero
+                            </th>
+                            <th
+                                class="px-0 py-3 border-b border-gray-400  text-left text-xs leading-4 font-medium text-purple-200  uppercase tracking-wider">
+                                Telefonia
+                                Full/Local
+                            </th>
+                            <th
+                                class="px-4 py-3 border-b border-gray-400  text-left text-xs leading-4 font-medium text-purple-200  uppercase tracking-wider">
+                                Servicio
+                                Desayuno/Almuerzo/Cena
+                            </th>
+
+                            <th
+                                class="px-1 py-3 border-b border-gray-400  text-left text-xs leading-4 font-medium text-purple-200  uppercase tracking-wider">
+                                Servicio Bar/Mini Bar
+                            </th>
+                            <th
+                                class="px-4 py-3 border-b border-gray-400  text-left text-xs leading-4 font-medium text-purple-200  uppercase tracking-wider">
+                                Servicio Lavanderia/Planchado
+                            </th>
+                          
+
+                            <th
+                                class="px-0 py-3 border-b border-gray-400  text-left text-xs leading-4 font-medium text-purple-200  uppercase tracking-wider">
+                                Acciones
+                            </th>
+                        </tr>
+                        
+                    </thead>
+                    
+                    <!-- for para entragar los datos en el listado de pasajeros -->
+                    {% for s  in entity %}
+                    
+                    <td class="px-3 py-6 whitespace-no-wrap border-b border-gray-600 ">
+                        
+                        <p class="text-purple-200 font-bold text-xl">{{s.dni}}</p>
+
+                    </td>
+                    <td class="px-0 py-4 whitespace-no-wrap border-b border-gray-600">
+                        <p class="leading-4 text-purple-200  text-md  mb-2">{{s.telefoniaFull}}  </p>
+                        <p class="leading-5 text-purple-200  text-md  mb-4">{{s.telefoniaLocal}}</p>
+                        <!-- <p class="text-sm leading-5 text-purple-200 "> Rut O pasaporte </p> -->
+
+                    </td>
+                    <td class="px-6 py-1 whitespace-no-wrap border-b border-gray-600 ">
+                        <p class="text-purple-200 text-sm mb-3">{{s.desayuno}}</p>
+                        <p class="text-purple-200 text-sm mb-3">{{s.almuerzo}}</p>
+                        <p class="text-purple-200 text-sm mb-3">{{s.cena}}</p>
+                    </td>
+                    <td class="px-1 py-4 whitespace-no-wrap border-b border-gray-600 ">
+                        <p class="text-purple-200 mb-4">{{s.bar}}</p>
+                        <p class="text-purple-200 mb-4">{{s.miniBar}}</p>
+                    </td>
+                    <td class="px-4 py-4 whitespace-no-wrap border-b border-gray-600  leading-5 text-gray-700">
+                        <p class="text-purple-200 mb-4">{{s.lavanderia}}</p>
+                        <p class="text-purple-200 mb-4">{{s.planchado}}</p>
+                    </td>
+                    <td class="grid grid-rows-4 grid-flow-col gap-3 px-1 py-5 whitespace-no-wrap border-b border-gray-600 text-sm leading-4 mr-2">
+                        <a href="{% url 'editarServicio' s.id %}" 
+                            class="button text-yellow-500 font-bold hover:text-white eliminar">Editar</a>
+                        <a href="#" onclick="eliminarServicio({{s.id}})"
+                            class="button text-purple-200  hover:text-white eliminar">Eliminar</a>
+                     
+                            
+                    </td>
+                    
+                   
+                    <tbody id="listado-pasajeros" class="bg-white"></tbody>
+                    {% endfor %}
+                </table>
+            </div>
+            <div>
+                {% include 'pasajeros/paginator.html' %}
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+
+<!-- -----------FIN CONTENIDO----------- -->
+{% endblock content %}
+
+{% block footer %}
+{% include 'componentes/footer.html'%}
+{% endblock %}
+
+
+<!-- ------------------------------------------------------------------- -->
+<!-- FUNCION JAVASCRIPT PARA ELIMIENAR CON SWEET ALERT! -->
+
+{% block js %} 
+    <script>
+        function eliminarServicio (id) {
+            Swal.fire({
+                "title": "¿Estas seguro de eliminar este Servicio?",
+                "text": "¡ATENCION! ¡Esta accion es irreversible!",
+                "icon": "question",
+                "showCancelButton": true,
+                "cancelButtonText": "¡Cancelar Acción!",
+                "confirmButtonText": "¡Si, Estoy Seguro!",
+                "reverseButton": true,
+                "confirmButtonColor": "#dc3545"               
+            })
+            .then(function(result) {
+                if(result.isConfirmed){
+                    window.location.href = "/eliminarServicio/" + id + "/"
+                }
+            })
+        }
+        
+    </script>
+{% endblock %}
+    

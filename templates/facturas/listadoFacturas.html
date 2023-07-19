@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %} Factura {% endblock %}
+
+{% block content %}
+{% include 'componentes/sidenav.html' %}
+<!-- --------CONTENIDO DE LISTADO DE LISTADO--------- -->
+
+<main id="mainListado" class="ml-64 md:w-3/5  xl:w-4/5 px-1 py-3">
+
+    <h2 class="text-3xl font-bold text-center text-purple-200 mt-1">Listado de Facturas</h2>
+
+    <div class="flex flex-col mt-5">
+        <div class="py-2 overflow-x-auto">
+            <div
+                class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+                <table class="min-w-full bg-gradient-to-r from-purple-800 via-violet-900 to-purple-800">
+                    <thead class="bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900">
+                        <tr>
+                            <th
+                                class="px-3 py-3 border-b border-gray-400  text-left text-xs leading-4 font-medium text-purple-200  uppercase tracking-wider">
+                                Pasajero
+                            </th>
+                            <th
+                                class="px-0 py-3 border-b border-gray-400  text-left text-xs leading-4 font-medium text-purple-200  uppercase tracking-wider">
+                                Servicios
+                            </th>
+                            <th
+                                class="px-1 py-3 border-b border-gray-400  text-left text-xs leading-4 font-medium text-purple-200  uppercase tracking-wider">
+                                Valor
+                            </th>
+                            <th
+                                class="px-1 py-3 border-b border-gray-400  text-left text-xs leading-4 font-medium text-purple-200  uppercase tracking-wider">
+                                Forma Pago
+                            </th>
+                      
+
+                            <th
+                                class="px-0 py-3 border-b border-gray-400  text-left text-xs leading-4 font-medium text-purple-200  uppercase tracking-wider">
+                                Acciones
+                            </th>
+                        </tr>
+                        
+                    </thead>
+                    
+                    <!-- for para entragar los datos en el listado de pasajeros -->
+                    {% for f  in entity %}
+                    
+                    <td class="px-3 py-4 whitespace-no-wrap border-b border-gray-600 ">
+                        <p class="text-purple-200 font-medium text-lg">{{f.pasajero}}  </p>
+
+                    </td>
+                    <td class="px-0 py-4 whitespace-no-wrap border-b border-gray-600">
+                        <p class="leading-4 text-purple-200  text-md  font-bold mb-2">{{f.servicios}}</p>
+                     
+                    <td class="px-1 py-4 whitespace-no-wrap border-b border-gray-600 ">
+                        <p class="text-purple-200 mb-4"> {{f.total}} </p>
+                        <p class="text-purple-200 mb-4">  </p>
+                    </td>
+                    <td class="px-1 py-4 whitespace-no-wrap border-b border-gray-600 ">
+                        <p class="text-purple-200 mb-4"> {{f.formaPago}} </p>
+                        <p class="text-purple-200 mb-4">  </p>
+                    </td>
+ 
+                    
+                    <td class="grid grid-rows-3 grid-flow-col gap-3 px-1 py-5 whitespace-no-wrap border-b border-gray-600 text-sm leading-4 mr-2">
+                        <a href="#" onclick="eliminarFactura({{f.id}})"
+                            class="button text-purple-200  hover:text-white eliminar">Anular Factura</a>
+
+                        <a href="https://www.sencillito.com/inicio?gclid=CjwKCAjw-rOaBhA9EiwAUkLV4nXVPMYEZJivruuAuLw14BRLduoQZ6POvtU429H1fvdoYiFuBXisCRoCXr8QAvD_BwE"
+                            class="font-bold text-purple-100  hover:text-white">Pagar</a>
+                            
+                    </td>
+                    <tbody id="listado-pasajeros" class="bg-white"></tbody>
+                    {% endfor %}
+                </table>
+            </div>
+            <div>
+                {% include 'pasajeros/paginator.html' %}
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+
+<!-- -----------FIN CONTENIDO----------- -->
+{% endblock content %}
+
+{% block footer %}
+{% include 'componentes/footer.html'%}
+{% endblock %}
+
+
+<!-- ------------------------------------------------------------------- -->
+<!-- FUNCION JAVASCRIPT PARA ELIMIENAR CON SWEET ALERT! -->
+{% block js %} 
+    <script>
+        function eliminarFactura(id) {
+            Swal.fire({
+                "title": "¿Estas seguro de anular esta Factura?",
+                "text": "¡ATENCION! ¡Esta accion es irreversible!",
+                "icon": "question",
+                "showCancelButton": true,
+                "cancelButtonText": "¡Cancelar Acción!",
+                "confirmButtonText": "¡Si, Estoy Seguro!",
+                "reverseButton": true,
+                "confirmButtonColor": "#dc3545"               
+            })
+            .then(function(result) {
+                if(result.isConfirmed){
+                    window.location.href = "/eliminarFactura/" + id + "/"
+                }
+            })          
+        }
+    </script>
+    
+{% endblock %}

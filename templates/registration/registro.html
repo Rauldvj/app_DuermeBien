@@ -1,0 +1,48 @@
+{% extends 'base.html' %} 
+
+<!-- {% load static%}  -->
+
+{% block title %} 
+Registro Usuario 
+{% endblock %} 
+{% load tailwind_filters %} 
+
+{% block content %}
+<!-- ----------------------------------- -->
+<section class="h-screen">
+    <div class="px-6 h-full text-gray-800">
+        <div class="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
+            <div class="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0">
+                <h1 class="title text-purple-200 py-2 font-bold text-3xl text-center">ADMINISTRACION DE USUARIOS</h1>
+                
+                <!-- En este source se inserta la "Imagen" con la direccion url del bucket almacenado en la nube de AWS -->
+                <img class="h-96 pl-6 ml-24 py-2" src="https://sumativa3.s3.amazonaws.com/imagenes/Nuevo+Usuario.jpg"
+                    class="w-full" alt="Sample image" />
+            </div>
+            <div class="xl:ml-20 xl:w-4/12 lg:w-4/12 md:w-8/12 mb-12 md:mb-0">
+                <form action="" method="post">
+                    {% csrf_token %} 
+                    {{ form|crispy }}
+
+            </div>
+            <div class="flex justify-between  ">
+                <div class=" ">
+                    <a href="{% url 'administracion' %}" class="mr-80 p-2 mb-32 justify-between font-bold text-xl text-white hover:text-gray-100 transition duration-300 ease-in-out">Regresar al Panel </a>
+                    <button type="submit" value="registrar" class="mb-2 inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xl leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out">Crear Usuario</button>
+                </div>
+            </div>
+            
+            </form>
+        </div>
+    </div>
+
+
+</div>
+</section>
+<
+
+<!-- ------------------------------------------- -->
+
+{% endblock content %} 
+
+
