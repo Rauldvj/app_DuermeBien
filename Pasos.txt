@@ -36,25 +36,10 @@ cd app_DuermeBien (Para ingresar en el directorio clonado)
 
 ----------------------------------------------------------------------
 Paso 5 Instalar necesarios para ejecutar la aplicacion
+usar el archivo requirements.txt para instalar las libreras necesarias
 
-sudo dnf install pip -y (Instalar pip en Linux)
-pip install django (Instalar Django)
-pip install crispy-tailwind
-pip install django-admin-interface
-pip install django-admin-tailwind
-pip install django-browser-reload
-pip install django-colorfield
-pip install django-crispy-forms
-pip install django-tailwind
-pip install djangorestframework
-pip install mysqlclient
-pip install python-slugify
-pip install pytz
-pip install sqlparse
-pip install django-tailwind
-pip install tailwind-colors
-pip install pymysql
-pip install pillow
+Usar el comando:
+pip install -r requirements.txt
 
 user: admin
 pass: admin123456
